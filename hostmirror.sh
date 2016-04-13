@@ -5,7 +5,7 @@ osascript -e 'tell application "Terminal" to do script "ngrok http 80"'
 sudo pkill node
 localhost.sh&
 
-trap 'pkill ngrok; sudo pkill node' INT
+trap 'pkill ngrok; sudo pkill node; exit;' INT
 
 fileNameWithExt="img.png"
 imageName=$(echo "${fileNameWithExt}" | sed 's/.png//g')
@@ -24,6 +24,6 @@ do
 
     cp -f ${fileNameWithExt} ${imageName}720x450.png
     sips -z 450 720 ${imageName}720x450.png
-    
+
     sleep 0.03;
 done
