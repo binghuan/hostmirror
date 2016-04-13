@@ -5,7 +5,7 @@ osascript -e 'tell application "Terminal" to do script "ngrok http 80"'
 sudo pkill node
 localhost.sh&
 
-trap 'pkill ngrok; sudo pkill node; exit;' INT
+trap 'ls | grep -i -E "img" | while read line ; do rm -f "$line"; done; pkill ngrok; sudo pkill node; exit;' INT
 
 fileNameWithExt="img.png"
 imageName=$(echo "${fileNameWithExt}" | sed 's/.png//g')
